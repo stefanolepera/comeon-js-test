@@ -1,3 +1,5 @@
+import { PLAYER_DATA } from '../actions/types.js';
+
 const initialState = {
   player: {
     name: "",
@@ -8,7 +10,7 @@ const initialState = {
 
 export const playerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "PLAYER_DATA":
+    case PLAYER_DATA:
       return {
         ...state,
         player: action.payload

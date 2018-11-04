@@ -1,3 +1,5 @@
+import { LOGIN_SUCCESS, ADD_USERNAME, LOGIN_ERROR } from '../actions/types.js';
+
 const initialState = {
   username: "",
   isLoginSuccess: false,
@@ -6,17 +8,17 @@ const initialState = {
 
 export const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS":
+    case LOGIN_SUCCESS:
       return {
         ...state,
         isLoginSuccess: action.payload
       };
-    case "ADD_USERNAME":
+    case ADD_USERNAME:
       return {
         ...state,
         username: action.payload
       };
-    case "LOGIN_ERROR":
+    case LOGIN_ERROR:
       return {
         ...state,
         loginError: action.payload
