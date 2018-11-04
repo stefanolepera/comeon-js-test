@@ -1,7 +1,6 @@
 const initialState = {
   username: "",
   isLoginSuccess: false,
-  isLogoutSuccess: false,
   loginError: ""
 };
 

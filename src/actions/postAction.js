@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export const login = postData => dispatch => {
+  dispatch({
+    type: "LOGIN_ERROR",
+    payload: ''
+  });
   axios({
     method: "post",
     url: "http://localhost:3001/login",

@@ -1,16 +1,12 @@
-import React from "react";
-import Header from "./Header";
-import Content from "./Content";
+import React from 'react';
+import Header from './Header';
+import Content from './Content';
 
-class Casino extends React.Component {
-  render() {
-    return (
-      <div className="casino">
+const Casino = () => (
+    <div className="casino">
         <Header />
         <Content />
-      </div>
-    );
-  }
-}
+    </div>
+);
 
 export default Casino;

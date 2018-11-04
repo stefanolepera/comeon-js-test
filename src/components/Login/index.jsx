@@ -1,86 +1,110 @@
-import React from "react";
-import { connect } from "react-redux";
-import { login } from "../../actions/postAction";
+import React from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/postAction';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      username: "",
-      password: ""
+        this.state = {
+            username: '',
+            password: '',
+            loginError: ''
+        };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.loginError !== prevProps.loginError) {
+            this.setState({
+                username: '',
+                password: '',
+                loginError: this.props.loginError
+            });
+        }
+    }
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.isLoginSuccess === this.props.isLoginSuccess;
+    }
+
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
     };
-  }
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    onSubmit = e => {
+        e.preventDefault();
 
-  onSubmit = e => {
-    e.preventDefault();
+        const credentials = {
+            username: this.state.username,
+            password: this.state.password
+        };
 
-    const credentials = {
-      username: this.state.username,
-      password: this.state.password
+        this.props.login(credentials);
     };
 
-    this.props.login(credentials);
-  };
-
-  render() {
-    const { username, password } = this.state;
-    return (
-      <div className="login">
-        <div className="ui grid centered">
-          <form onSubmit={this.onSubmit}>
-            <div className="fields">
-              <div className="required field">
-                <div className="ui icon input">
-                  <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    onChange={this.onChange}
-                    value={username}
-                    autoFocus
-                  />
-                  <i className="user icon" />
+    render() {
+        const { username, password } = this.state;
+        return (
+            <div className="login">
+                <div className="ui grid centered">
+                    <form onSubmit={this.onSubmit}>
+                        <div className="fields">
+                            <div className="required field">
+                                <div className="ui icon input">
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        placeholder="Username"
+                                        onChange={this.onChange}
+                                        value={username}
+                                        autoFocus
+                                    />
+                                    <i className="user icon" />
+                                </div>
+                            </div>
+                            <div className="required field">
+                                <div className="ui icon input">
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        onChange={this.onChange}
+                                        value={password}
+                                    />
+                                    <i className="lock icon" />
+                                </div>
+                            </div>
+                            <div className="field">
+                                <div className="ui icon input">
+                                    <input type="submit" value="Login" />
+                                    <i className="right chevron icon" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
-              <div className="required field">
-                <div className="ui icon input">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={this.onChange}
-                    value={password}
-                  />
-                  <i className="lock icon" />
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui icon input">
-                  <input type="submit" value="Login" />
-                  <i className="right chevron icon" />
-                </div>
-              </div>
+                {
+                    <div className="ui header centered">
+                        {this.props.loginError}
+                    </div>
+                }
             </div>
-            {this.props.loginError && (
-              <div className="item">{this.props.loginError}</div>
-            )}
-          </form>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
+Login.propTypes = {
+    loginError: PropTypes.string.isRequired,
+    isLoginSuccess: PropTypes.bool.isRequired
+};
+
 const mapStateToProps = state => ({
-  loginError: state.login.loginError
+    loginError: state.login.loginError,
+    isLoginSuccess: state.login.isLoginSuccess
 });
 
 export default connect(
-  mapStateToProps,
-  { login }
+    mapStateToProps,
+    { login }
 )(Login);
