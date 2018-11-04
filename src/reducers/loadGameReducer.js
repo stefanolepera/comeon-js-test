@@ -1,0 +1,20 @@
+const initialState = {
+  code: ""
+};
+
+export const loadGameReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "LOAD_GAME":
+      return {
+        ...state,
+        code: action.payload
+      };
+    case "BACK_TO_LOBBY":
+      return {
+        ...state,
+        code: action.payload
+      };
+    default:
+      return state;
+  }
+};
