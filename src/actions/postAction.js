@@ -1,5 +1,9 @@
 import axios from "axios";
-import { LOGIN_ERROR, LOGIN_SUCCESS, ADD_USERNAME, PLAYER_DATA, RESET_FILTERS } from '../actions/types';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR, ADD_USERNAME, PLAYER_DATA, RESET_FILTERS } from '../actions/types';
+
+const loginStart = payload => ({
+  type: LOGIN_START
+});
 
 const loginSuccess = payload => ({
   type: LOGIN_SUCCESS,
@@ -26,11 +30,8 @@ const resetFilter = () => ({
 });
 
 export const login = postData => dispatch => {
-  dispatch(loginError(''));
-  axios({
-    method: "post",
-    url: "http://localhost:3001/login",
-    data: postData,
+  dispatch(loginStart());
+  axios.post("http://localhost:3001/login", postData, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -47,10 +48,7 @@ export const login = postData => dispatch => {
 };
 
 export const logout = postData => dispatch => {
-  axios({
-    method: "post",
-    url: "http://localhost:3001/logout",
-    data: postData,
+  axios.post("http://localhost:3001/logout", postData, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"

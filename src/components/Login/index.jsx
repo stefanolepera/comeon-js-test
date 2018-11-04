@@ -24,10 +24,6 @@ class Login extends React.Component {
         }
     }
 
-    shouldComponentUpdate(nextProps) {
-        return nextProps.isLoginSuccess === this.props.isLoginSuccess;
-    }
-
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
