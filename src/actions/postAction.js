@@ -51,6 +51,9 @@ export const logout = postData => dispatch => {
         type: "LOGIN_SUCCESS",
         payload: false
       });
+      dispatch({
+        type: 'RESET_FILTERS'
+      })
     })
     .catch(err => {
       console.log(err.response);

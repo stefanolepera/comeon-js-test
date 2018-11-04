@@ -36,13 +36,13 @@ class Content extends React.Component {
                         </div>
                     )}
                     {filteredGames.map(game => (
-                        <GameItem key={Math.random()} game={game} />
+                        <GameItem key={game.code} game={game} />
                     ))}
                 </div>
                 <div className="four wide column">
                     <h3 className="ui dividing header">Categories</h3>
                     {this.props.categories.map(category => (
-                        <Category key={Math.random()} category={category} />
+                        <Category key={category.id} category={category} />
                     ))}
                 </div>
             </div>

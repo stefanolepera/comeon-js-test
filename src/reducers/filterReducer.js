@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORY, FILTER_BY_NAME } from '../actions/types.js';
+import { FILTER_BY_CATEGORY, FILTER_BY_NAME, RESET_FILTERS } from '../actions/types.js';
 
 const initialState = {
   categoryIndex: 0,
@@ -17,6 +17,8 @@ export const filterReducer = (state = initialState, action) => {
         ...state,
         gameName: action.payload
       };
+    case RESET_FILTERS:
+      return initialState;
     default:
       return state;
   }
