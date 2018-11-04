@@ -3,7 +3,7 @@ import GameItem from './GameItem';
 import Category from './Category';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAllGames, getAllCategories } from '../../../actions/postAction';
+import { getAllGames, getAllCategories } from '../../../actions/getAction';
 
 class Content extends React.Component {
     componentDidMount() {

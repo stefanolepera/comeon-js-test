@@ -1,10 +1,32 @@
 import axios from "axios";
+import { LOGIN_ERROR, LOGIN_SUCCESS, ADD_USERNAME, PLAYER_DATA, RESET_FILTERS } from '../actions/types';
+
+const loginSuccess = payload => ({
+  type: LOGIN_SUCCESS,
+  payload
+});
+
+const loginError = payload => ({
+    type: LOGIN_ERROR,
+    payload
+});
+
+const addUserName = payload => ({
+  type: ADD_USERNAME,
+  payload
+});
+
+const playerData = payload => ({
+  type: PLAYER_DATA,
+  payload
+});
+
+const resetFilter = () => ({
+  type: RESET_FILTERS
+});
 
 export const login = postData => dispatch => {
-  dispatch({
-    type: "LOGIN_ERROR",
-    payload: ''
-  });
+  dispatch(loginError(''));
   axios({
     method: "post",
     url: "http://localhost:3001/login",
@@ -15,24 +37,12 @@ export const login = postData => dispatch => {
     }
   })
     .then(res => {
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: true
-      });
-      dispatch({
-        type: "ADD_USERNAME",
-        payload: postData.username
-      });
-      dispatch({
-        type: "PLAYER_DATA",
-        payload: res.data.player
-      });
+      dispatch(loginSuccess(true));
+      dispatch(addUserName(postData.username));
+      dispatch(playerData(res.data.player));
     })
     .catch(err => {
-      dispatch({
-        type: "LOGIN_ERROR",
-        payload: err.response.data.error
-      });
+      dispatch(loginError(err.response.data.error));
     });
 };
 
@@ -47,45 +57,8 @@ export const logout = postData => dispatch => {
     }
   })
     .then(res => {
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: false
-      });
-      dispatch({
-        type: 'RESET_FILTERS'
-      })
-    })
-    .catch(err => {
-      console.log(err.response);
-    });
-};
-
-export const getAllGames = () => dispatch => {
-  axios({
-    method: "get",
-    url: "http://localhost:3001/games"
-  })
-    .then(res => {
-      dispatch({
-        type: "GET_ALL_GAMES",
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      console.log(err.response);
-    });
-};
-
-export const getAllCategories = () => dispatch => {
-  axios({
-    method: "get",
-    url: "http://localhost:3001/categories"
-  })
-    .then(res => {
-      dispatch({
-        type: "GET_ALL_CATEGORIES",
-        payload: res.data
-      });
+      dispatch(loginSuccess(false));
+      dispatch(resetFilter());
     })
     .catch(err => {
       console.log(err.response);

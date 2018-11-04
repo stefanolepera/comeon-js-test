@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { postReducer } from "./postReducer";
 import { playerReducer } from "./playerReducer";
-import { getReducer } from "./getReduces";
+import { getReducer } from "./getReducer";
 import { loadGameReducer } from "./loadGameReducer";
 import { filterReducer } from "./filterReducer";
 

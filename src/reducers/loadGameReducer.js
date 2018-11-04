@@ -12,10 +12,7 @@ export const loadGameReducer = (state = initialState, action) => {
         code: action.payload
       };
     case BACK_TO_LOBBY:
-      return {
-        ...state,
-        code: action.payload
-      };
+      return initialState;
     default:
       return state;
   }
