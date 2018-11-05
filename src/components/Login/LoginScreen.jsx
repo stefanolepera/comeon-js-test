@@ -32,8 +32,8 @@ class LoginScreen extends React.Component {
         e.preventDefault();
 
         const credentials = {
-            username: this.state.username,
-            password: this.state.password
+            username: this.state.username.replace(/\s/g, ''),
+            password: this.state.password.replace(/\s/g, '')
         };
 
         this.props.login(credentials);
