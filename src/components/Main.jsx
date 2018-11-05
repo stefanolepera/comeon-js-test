@@ -1,7 +1,7 @@
 import React from 'react';
-import Login from './Login';
-import Casino from './Casino';
-import Game from './Game';
+import LoginScreen from './Login/LoginScreen';
+import LobbyScreen from './Lobby/LobbyScreen';
+import GameScreen from './Game/GameScreen';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -10,10 +10,11 @@ class Main extends React.Component {
         return (
             <div className="main container">
                 {!this.props.isLoginSuccess &&
-                    !this.props.gameToLoad && <Login />}
+                    !this.props.gameToLoad && <LoginScreen />}
                 {this.props.isLoginSuccess &&
-                    !this.props.gameToLoad && <Casino />}
-                {this.props.gameToLoad && this.props.isLoginSuccess && <Game />}
+                    !this.props.gameToLoad && <LobbyScreen />}
+                {this.props.gameToLoad &&
+                    this.props.isLoginSuccess && <GameScreen />}
             </div>
         );
     }

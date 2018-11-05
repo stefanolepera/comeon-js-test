@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { filterByName } from '../../../../actions/filterAction';
 
-class Search extends React.Component {
+class SearchBar extends React.Component {
     constructor(props) {
         super(props);
 
@@ -39,4 +39,4 @@ class Search extends React.Component {
 export default connect(
     null,
     { filterByName }
-)(Search);
+)(SearchBar);

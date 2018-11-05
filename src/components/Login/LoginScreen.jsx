@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/postAction';
 import PropTypes from 'prop-types';
 
-class Login extends React.Component {
+class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
 
@@ -90,7 +90,7 @@ class Login extends React.Component {
     }
 }
 
-Login.propTypes = {
+LoginScreen.propTypes = {
     loginError: PropTypes.string.isRequired,
     isLoginSuccess: PropTypes.bool.isRequired
 };
@@ -103,4 +103,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { login }
-)(Login);
+)(LoginScreen);

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../../../actions/postAction';
 
-class Player extends React.Component {
+class PlayerInfo extends React.Component {
     onClick = () => {
         const credentials = {
             username: this.props.username
@@ -53,4 +53,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { logout }
-)(Player);
+)(PlayerInfo);

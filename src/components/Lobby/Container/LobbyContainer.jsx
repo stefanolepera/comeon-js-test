@@ -1,11 +1,11 @@
 import React from 'react';
-import GameItem from './GameItem';
-import Category from './Category';
+import GameItem from './GameItem/GameItem';
+import CategoryItem from './CategoryItem/CategoryItem';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllGames, getAllCategories } from '../../../actions/getAction';
 
-class Content extends React.Component {
+class LobbyContainer extends React.Component {
     componentDidMount() {
         this.props.getAllGames();
         this.props.getAllCategories();
@@ -42,7 +42,7 @@ class Content extends React.Component {
                 <div className="four wide column">
                     <h3 className="ui dividing header">Categories</h3>
                     {this.props.categories.map(category => (
-                        <Category key={category.id} category={category} />
+                        <CategoryItem key={category.id} category={category} />
                     ))}
                 </div>
             </div>
@@ -50,7 +50,7 @@ class Content extends React.Component {
     }
 }
 
-Content.propTypes = {
+LobbyContainer.propTypes = {
     games: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
     currentCategory: PropTypes.number.isRequired,
@@ -67,4 +67,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { getAllGames, getAllCategories }
-)(Content);
+)(LobbyContainer);

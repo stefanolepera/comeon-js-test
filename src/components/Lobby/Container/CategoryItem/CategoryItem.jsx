@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { filterByCategory } from '../../../../actions/filterAction';
 
-class Category extends React.Component {
+class CategoryItem extends React.Component {
     onClick = () => {
         this.props.filterByCategory(this.props.category.id);
     };
@@ -24,11 +24,11 @@ class Category extends React.Component {
     }
 }
 
-Category.propTypes = {
+CategoryItem.propTypes = {
     category: PropTypes.object.isRequired
 };
 
 export default connect(
     null,
     { filterByCategory }
-)(Category);
+)(CategoryItem);

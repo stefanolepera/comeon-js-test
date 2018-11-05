@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { backToLobby, loadGame } from '../../actions/loadGameAction';
 
-class Game extends React.Component {
+class GameScreen extends React.Component {
     componentDidMount() {
         window.comeon.game.launch(this.props.gameCode);
     }
@@ -60,7 +60,7 @@ class Game extends React.Component {
     }
 }
 
-Game.propTypes = {
+GameScreen.propTypes = {
     gameCode: PropTypes.string.isRequired,
     games: PropTypes.array.isRequired
 };
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { backToLobby, loadGame }
-)(Game);
+)(GameScreen);

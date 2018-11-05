@@ -2,12 +2,12 @@
 
 The first choice I had to make was related to the tech stack to use. I ended up going for Reactjs, ES6 and Redux as state management.
 There was a bit of boilerplate to deal with (especially Redux) so I used the `create-react-app` library trying to minimize that.
-Once the project was set up, my first approach was to split the provided html file in a mix of statefull / stateless components. I used the module / index.js approach for every component.
+Once the project was set up, my first approach was to split the provided html file in a mix of statefull / stateless components.
 After that was done I started to implement some logic to make the website work.
 That's the moment when I set up Redux and added Axios for the API calls.
 I finished one section at the time (login, games lobby, loaded game) and then I moved into polishing / refactoring the code and added some tests for the actions and reducers.
-To test the actions I've user the `redux-mock-store` and `moxios` libraries.
-Due to the time constrain I focused more on complete the task and on the quality of the code, the only adds that I made was a dropdown menu in the game screen where the user can load a different game without having to go back to the lobby.
+To test the actions I've user the `redux-mock-store` and `moxios` libraries, to help test the API calls.
+Due to the time constrain I focused more on complete the task and on the quality of the code and tests, the only adds that I made was a dropdown menu in the game screen where the user can load a different game without having to go back to the lobby.
 I managed to give the user a feedback for both the incorrect login (using the error coming from the API) and an empty result using the search bar for games (a No Match Found message gets displayed).
 I found and fixed a bug where if the user clicks on the logout button while some filters are active (either using the search bar or the categories), on the next successfull log in those filters were still active giving a poor user experience (I've just added a filter reset action that gets dispatched on logout).
 
