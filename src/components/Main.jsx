@@ -10,14 +10,17 @@ class Main extends React.Component {
         const displayLoginScreen =
             (!this.props.isLoginSuccess || this.props.isLogoutSuccess) &&
             !this.props.gameToLoad;
+
         const displayLoobbyScren =
             this.props.isLoginSuccess &&
             !this.props.isLogoutSuccess &&
             !this.props.gameToLoad;
+
         const displayGameScreen =
             this.props.isLoginSuccess &&
             !this.props.isLogoutSuccess &&
             this.props.gameToLoad;
+
         return (
             <div className="main container">
                 {displayLoginScreen && <LoginScreen />}

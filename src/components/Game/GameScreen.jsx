@@ -77,8 +77,8 @@ const mapDispatchToProps = dispatch => {
             dispatch(backToLobby());
             dispatch(resetAllFilter());
         },
-        loadGame: () => {
-            dispatch(loadGame());
+        loadGame: code => {
+            dispatch(loadGame(code));
         }
     };
 };
