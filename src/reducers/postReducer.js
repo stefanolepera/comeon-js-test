@@ -1,14 +1,16 @@
 import { 
-  LOGIN_SUCCESS, 
   LOGIN_START, 
-  ADD_USERNAME, 
-  LOGIN_ERROR 
+  LOGIN_SUCCESS, 
+  LOGIN_ERROR,
+  LOGOUT_SUCCESS,
+  ADD_USERNAME
 } from '../actions/types.js';
 
 const initialState = {
   username: "",
   isLoginSuccess: false,
-  loginError: ""
+  loginError: "",
+  isLogoutSuccess: false
 };
 
 export const postReducer = (state = initialState, action) => {
@@ -24,6 +26,11 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         loginError: action.payload
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isLogoutSuccess: action.payload
       };
     case ADD_USERNAME:
       return {

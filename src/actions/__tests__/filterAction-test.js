@@ -28,4 +28,15 @@ describe('filter actions test', () => {
     store.dispatch(actions.filterByName('star'));
     expect(store.getActions()).toEqual(expectedActions);
   });
+
+  it('creates RESET_FILTERS action', () => {
+    const expectedActions = [
+      { type: types.RESET_FILTERS }
+    ];
+
+    const store = mockStore({});
+
+    store.dispatch(actions.resetAllFilter());
+    expect(store.getActions()).toEqual(expectedActions);
+  });
 });

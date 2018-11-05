@@ -3,6 +3,7 @@ import {
   LOGIN_START, 
   LOGIN_SUCCESS, 
   LOGIN_ERROR, 
+  LOGOUT_SUCCESS,
   ADD_USERNAME, 
   PLAYER_DATA, 
   RESET_FILTERS 
@@ -22,6 +23,11 @@ const loginError = payload => ({
     payload
 });
 
+const logoutSuccess = payload => ({
+  type: LOGOUT_SUCCESS,
+  payload
+});
+
 const addUserName = payload => ({
   type: ADD_USERNAME,
   payload
@@ -35,6 +41,8 @@ const playerData = payload => ({
 const resetFilter = () => ({
   type: RESET_FILTERS
 });
+
+const networkErrorMessage = 'There is a nextwork problem. Please try again in few minutes';
 
 export const login = postData => dispatch => {
   dispatch(loginStart());
@@ -50,7 +58,9 @@ export const login = postData => dispatch => {
       dispatch(playerData(res.data.player));
     })
     .catch(err => {
-      dispatch(loginError(err.response.data.error));
+      err.response ? 
+        dispatch(loginError(err.response.data.error)) : 
+        window.alert(networkErrorMessage);
     });
 };
 
@@ -62,10 +72,11 @@ export const logout = postData => dispatch => {
     }
   })
     .then(res => {
-      dispatch(loginSuccess(false));
+      dispatch(logoutSuccess(true));
       dispatch(resetFilter());
     })
     .catch(err => {
-      console.log(err.response);
+      const errorMessage = (err.response && err.response.data.error) || networkErrorMessage;
+      window.alert(errorMessage);
     });
 };

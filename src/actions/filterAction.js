@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORY, FILTER_BY_NAME } from '../actions/types';
+import { FILTER_BY_CATEGORY, FILTER_BY_NAME, RESET_FILTERS } from '../actions/types';
 
 export const filterByCategory = payload => ({
   type: FILTER_BY_CATEGORY,
@@ -10,3 +10,6 @@ export const filterByName = payload => ({
   payload
 });
 
+export const resetAllFilter = () => ({
+  type: RESET_FILTERS
+})

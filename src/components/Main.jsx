@@ -7,14 +7,22 @@ import { connect } from 'react-redux';
 
 class Main extends React.Component {
     render() {
+        const displayLoginScreen =
+            (!this.props.isLoginSuccess || this.props.isLogoutSuccess) &&
+            !this.props.gameToLoad;
+        const displayLoobbyScren =
+            this.props.isLoginSuccess &&
+            !this.props.isLogoutSuccess &&
+            !this.props.gameToLoad;
+        const displayGameScreen =
+            this.props.isLoginSuccess &&
+            !this.props.isLogoutSuccess &&
+            this.props.gameToLoad;
         return (
             <div className="main container">
-                {!this.props.isLoginSuccess &&
-                    !this.props.gameToLoad && <LoginScreen />}
-                {this.props.isLoginSuccess &&
-                    !this.props.gameToLoad && <LobbyScreen />}
-                {this.props.gameToLoad &&
-                    this.props.isLoginSuccess && <GameScreen />}
+                {displayLoginScreen && <LoginScreen />}
+                {displayLoobbyScren && <LobbyScreen />}
+                {displayGameScreen && <GameScreen />}
             </div>
         );
     }
@@ -27,6 +35,7 @@ Main.propTypes = {
 
 const mapStateToProps = state => ({
     isLoginSuccess: state.login.isLoginSuccess,
+    isLogoutSuccess: state.login.isLogoutSuccess,
     gameToLoad: state.game.code
 });
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { backToLobby, loadGame } from '../../actions/loadGameAction';
+import { resetAllFilter } from '../../actions/filterAction';
 
 class GameScreen extends React.Component {
     componentDidMount() {
@@ -26,7 +27,17 @@ class GameScreen extends React.Component {
         return (
             <div className="ingame">
                 <div className="ui grid centered">
-                    <div className="four wide column">
+                    <div className="three wide column">
+                        <div
+                            className="ui right floated secondary button inverted"
+                            onClick={this.onClick}
+                        >
+                            <i className="left chevron icon" />
+                            Back
+                        </div>
+                    </div>
+                    <div className="six wide column" />
+                    <div className="three wide column">
                         <select
                             className="dropdown"
                             onChange={this.onChange}
@@ -41,19 +52,9 @@ class GameScreen extends React.Component {
                     </div>
                 </div>
                 <div className="ui grid centered">
-                    <div className="three wide column">
-                        <div
-                            className="ui right floated secondary button inverted"
-                            onClick={this.onClick}
-                        >
-                            <i className="left chevron icon" />
-                            Back
-                        </div>
-                    </div>
                     <div className="ten wide column">
                         <div id="game-launch" />
                     </div>
-                    <div className="three wide column" />
                 </div>
             </div>
         );
@@ -70,7 +71,19 @@ const mapStateToProps = state => ({
     games: state.content.games
 });
 
+const mapDispatchToProps = dispatch => {
+    return {
+        backToLobby: () => {
+            dispatch(backToLobby());
+            dispatch(resetAllFilter());
+        },
+        loadGame: () => {
+            dispatch(loadGame());
+        }
+    };
+};
+
 export default connect(
     mapStateToProps,
-    { backToLobby, loadGame }
+    mapDispatchToProps
 )(GameScreen);

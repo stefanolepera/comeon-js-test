@@ -19,7 +19,8 @@ export const filterReducer = (state = initialState, action) => {
     case FILTER_BY_NAME:
       return {
         ...state,
-        gameName: action.payload
+        gameName: action.payload,
+        categoryIndex: 0
       };
     case RESET_FILTERS:
       return initialState;

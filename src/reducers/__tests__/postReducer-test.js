@@ -7,6 +7,7 @@ describe('post reducer test', () => {
           {
             username: "",
             isLoginSuccess: false,
+            isLogoutSuccess: false,
             loginError: ""
           }
         );
@@ -28,6 +29,7 @@ describe('post reducer test', () => {
           { 
             username: "",
             isLoginSuccess: false,
+            isLogoutSuccess: false,
             loginError: "" 
           }
         );

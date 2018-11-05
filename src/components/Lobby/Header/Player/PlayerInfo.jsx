@@ -22,7 +22,7 @@ class PlayerInfo extends React.Component {
                             alt="avatar"
                         />
                         <div className="content">
-                            <div className="header">
+                            <div className="ui header">
                                 <b className="name">{this.props.name}</b>
                             </div>
                             <div className="description event">

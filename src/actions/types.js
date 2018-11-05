@@ -1,6 +1,7 @@
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const ADD_USERNAME = 'ADD_USERNAME';
 export const PLAYER_DATA = 'PLAYER_DATA';
 export const GET_ALL_GAMES = 'GET_ALL_GAMES';
