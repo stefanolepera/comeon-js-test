@@ -16,7 +16,7 @@ describe('filter reducer', () => {
             type: types.FILTER_BY_CATEGORY,
             payload: 0
         };
-        expect(filterReducer({}, updateAction)).toEqual({ "categoryIndex": 0 });
+        expect(filterReducer({}, updateAction)).toEqual({ categoryIndex: 0 });
     });
 
     it('should handle the FILTER_BY_NAME', () => {
@@ -24,6 +24,6 @@ describe('filter reducer', () => {
             type: types.FILTER_BY_NAME,
             payload: 'star'
         };
-        expect(filterReducer({}, updateAction)).toEqual({ "gameName": 'star' });
+        expect(filterReducer({}, updateAction)).toEqual({ gameName: 'star' });
     });
 });

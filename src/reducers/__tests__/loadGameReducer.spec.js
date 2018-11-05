@@ -15,7 +15,7 @@ describe('loadGame reducer', () => {
             type: types.LOAD_GAME,
             payload: 'starburst'
         };
-        expect(loadGameReducer({}, updateAction)).toEqual({ "code": 'starburst' });
+        expect(loadGameReducer({}, updateAction)).toEqual({ code: 'starburst' });
     });
 
     it('should handle the BACK_TO_LOBBY', () => {
@@ -23,6 +23,6 @@ describe('loadGame reducer', () => {
             type: types.BACK_TO_LOBBY,
             payload: ''
         };
-        expect(loadGameReducer({}, updateAction)).toEqual({ "code": '' });
+        expect(loadGameReducer({}, updateAction)).toEqual({ code: '' });
     });
 });

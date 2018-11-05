@@ -1,7 +1,14 @@
 import axios from "axios";
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR, ADD_USERNAME, PLAYER_DATA, RESET_FILTERS } from '../actions/types';
+import { 
+  LOGIN_START, 
+  LOGIN_SUCCESS, 
+  LOGIN_ERROR, 
+  ADD_USERNAME, 
+  PLAYER_DATA, 
+  RESET_FILTERS 
+} from '../actions/types';
 
-const loginStart = payload => ({
+const loginStart = () => ({
   type: LOGIN_START
 });
 

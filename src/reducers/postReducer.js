@@ -1,4 +1,9 @@
-import { LOGIN_SUCCESS, LOGIN_START, ADD_USERNAME, LOGIN_ERROR } from '../actions/types.js';
+import { 
+  LOGIN_SUCCESS, 
+  LOGIN_START, 
+  ADD_USERNAME, 
+  LOGIN_ERROR 
+} from '../actions/types.js';
 
 const initialState = {
   username: "",

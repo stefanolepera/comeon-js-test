@@ -1,4 +1,8 @@
-import { FILTER_BY_CATEGORY, FILTER_BY_NAME, RESET_FILTERS } from '../actions/types.js';
+import { 
+  FILTER_BY_CATEGORY, 
+  FILTER_BY_NAME, 
+  RESET_FILTERS 
+} from '../actions/types.js';
 
 const initialState = {
   categoryIndex: 0,
