@@ -12,7 +12,7 @@ const getGames = payload => ({
   });
 
 export const getAllGames = () => dispatch => {
-    axios.get("http://localhost:3001/games")
+    return axios.get("http://localhost:3001/games")
       .then(res => {
           dispatch(getGames(res.data));
       })
@@ -22,7 +22,7 @@ export const getAllGames = () => dispatch => {
   };
   
   export const getAllCategories = () => dispatch => {
-    axios.get("http://localhost:3001/categories")
+    return axios.get("http://localhost:3001/categories")
       .then(res => {
           dispatch(getCategories(res.data));
       })

@@ -1,14 +1,11 @@
 import { LOAD_GAME, BACK_TO_LOBBY } from '../actions/types';
 
-export const loadGame = code => dispatch => {
-  dispatch({
-    type: LOAD_GAME,
-    payload: code
-  });
-};
+export const loadGame = payload => ({
+  type: LOAD_GAME,
+  payload
+});
 
-export const backToLobby = () => dispatch => {
-  dispatch({
-    type: BACK_TO_LOBBY
-  });
-};
+export const backToLobby = payload => ({
+  type: BACK_TO_LOBBY,
+  payload
+});

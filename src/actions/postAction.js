@@ -38,7 +38,7 @@ const resetFilter = () => ({
 
 export const login = postData => dispatch => {
   dispatch(loginStart());
-  axios.post("http://localhost:3001/login", postData, {
+  return axios.post("http://localhost:3001/login", postData, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -55,7 +55,7 @@ export const login = postData => dispatch => {
 };
 
 export const logout = postData => dispatch => {
-  axios.post("http://localhost:3001/logout", postData, {
+  return axios.post("http://localhost:3001/logout", postData, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
