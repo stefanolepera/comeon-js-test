@@ -74,7 +74,7 @@ describe('post actions test', () => {
     });
   });
 
-  it('creates LOGOUT_SUCCESS and RESET_FILTERS after successfuly fetching from API logout', () => {
+  it('creates LOGOUT_SUCCESS after successfuly fetching from API logout', () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -84,8 +84,7 @@ describe('post actions test', () => {
     });
 
     const expectedActions = [
-        { type: types.LOGOUT_SUCCESS, payload: true },
-        { type: types.RESET_FILTERS }
+        { type: types.LOGOUT_SUCCESS, payload: true }
     ];
 
     const store = mockStore({ payload: false });

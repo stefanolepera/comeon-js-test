@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../../../actions/postAction';
+import { resetAllFilter } from '../../../../actions/filterAction';
 
 class PlayerInfo extends React.Component {
     onClick = () => {
@@ -50,7 +51,16 @@ const mapStateToProps = state => ({
     event: state.user.player.event
 });
 
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: credentials => {
+            dispatch(logout(credentials));
+            dispatch(resetAllFilter());
+        }
+    };
+};
+
 export default connect(
     mapStateToProps,
-    { logout }
+    mapDispatchToProps
 )(PlayerInfo);

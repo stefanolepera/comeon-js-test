@@ -5,8 +5,7 @@ import {
   LOGIN_ERROR, 
   LOGOUT_SUCCESS,
   ADD_USERNAME, 
-  PLAYER_DATA, 
-  RESET_FILTERS 
+  PLAYER_DATA 
 } from '../actions/types';
 
 const loginStart = () => ({
@@ -36,10 +35,6 @@ const addUserName = payload => ({
 const playerData = payload => ({
   type: PLAYER_DATA,
   payload
-});
-
-const resetFilter = () => ({
-  type: RESET_FILTERS
 });
 
 const networkErrorMessage = 'There is a nextwork problem. Please try again in few minutes';
@@ -73,7 +68,6 @@ export const logout = postData => dispatch => {
   })
     .then(res => {
       dispatch(logoutSuccess(true));
-      dispatch(resetFilter());
     })
     .catch(err => {
       const errorMessage = (err.response && err.response.data.error) || networkErrorMessage;
