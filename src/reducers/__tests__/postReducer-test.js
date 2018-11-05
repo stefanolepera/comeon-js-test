@@ -43,6 +43,14 @@ describe('post reducer test', () => {
         expect(postReducer({}, updateAction)).toEqual({ loginError: 'player does not exist or wrong password' });
     });
 
+    it('should should handle the LOGOUT_SUCCESS', () => {
+      const updateAction = {
+        type: types.LOGOUT_SUCCESS,
+        payload: true
+      };
+      expect(postReducer({}, updateAction)).toEqual({ isLogoutSuccess: true });
+    });
+
     it('should should handle the ADD_USERNAME', () => {
         const updateAction = {
           type: types.ADD_USERNAME,
